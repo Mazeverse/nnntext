@@ -1,4 +1,3 @@
-
 // App.js
 import React, { useState, useEffect, useRef } from 'react';
 import html2canvas from 'html2canvas';
@@ -32,7 +31,9 @@ export default function App() {
     await new Promise(resolve => setTimeout(resolve, 100));
 
     if (screenRef.current) {
-      html2canvas(screenRef.current).then(canvas => {
+      html2canvas(screenRef.current, {
+        backgroundColor: '#000'  // ✅ 배경을 검정으로 저장
+      }).then(canvas => {
         const link = document.createElement('a');
         link.download = 'nnntext.png';
         link.href = canvas.toDataURL();
